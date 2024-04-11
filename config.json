@@ -299,25 +299,6 @@
         "outbound": "🚀节点选择"
       },
       {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "rule_set": "geosite-category-ads-all"
-          },
-          {
-            "domain_regex": "^stun\\..+"
-          },
-          {
-            "domain_keyword": ["stun", "httpdns"]
-          },
-          {
-            "protocol": "stun"
-          }
-        ],
-        "outbound": "block"
-      },
-      {
         "rule_set": [
           "geosite-private",
           "geosite-cn",
@@ -368,6 +349,25 @@
         "domain_keyword": ["Xiaomi", "xiaomi"],
         "domain_suffix": ["xiaomi.com", "mi.com", "cloudflare"],
         "outbound": "DIRECT"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "rule_set": "geosite-category-ads-all"
+          },
+          {
+            "domain_regex": "^stun\\..+"
+          },
+          {
+            "domain_keyword": ["stun", "httpdns"]
+          },
+          {
+            "protocol": "stun"
+          }
+        ],
+        "outbound": "block"
       },
       {
         "rule_set": ["geosite-google", "geosite-geolocation-!cn"],

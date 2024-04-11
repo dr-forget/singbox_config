@@ -358,13 +358,7 @@
             "rule_set": "geosite-category-ads-all"
           },
           {
-            "domain_regex": "^stun\\..+"
-          },
-          {
-            "domain_keyword": ["stun", "httpdns"]
-          },
-          {
-            "protocol": "stun"
+            "domain_keyword": ["httpdns"]
           }
         ],
         "outbound": "block"

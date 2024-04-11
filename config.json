@@ -1,0 +1,385 @@
+{
+  "log": {
+    "disabled": false,
+    "level": "info",
+    "timestamp": true
+  },
+  "experimental": {
+    "clash_api": {
+      "external_controller": ":9090",
+      "external_ui": "ui",
+      "external_ui_download_url": "",
+      "external_ui_download_detour": "",
+      "secret": "",
+      "default_mode": "Rule"
+    },
+    "cache_file": {
+      "enabled": true,
+      "path": "cache.db",
+      "store_fakeip": true
+    }
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "proxydns",
+        "address": "tls://1.1.1.1/dns-query",
+        "detour": "🚀节点选择"
+      },
+      {
+        "tag": "localdns",
+        "address": "h3://223.5.5.5/dns-query",
+        "detour": "DIRECT"
+      },
+      {
+        "address": "rcode://refused",
+        "tag": "block"
+      },
+      {
+        "tag": "dns_fakeip",
+        "address": "fakeip"
+      }
+    ],
+    "rules": [
+      {
+        "outbound": "any",
+        "server": "localdns",
+        "disable_cache": true
+      },
+      {
+        "clash_mode": "Global",
+        "server": "proxydns"
+      },
+      {
+        "clash_mode": "Direct",
+        "server": "localdns"
+      },
+      {
+        "rule_set": "geosite-cn",
+        "server": "localdns"
+      },
+      {
+        "rule_set": "geosite-geolocation-!cn",
+        "server": "proxydns"
+      },
+      {
+        "rule_set": "geosite-geolocation-!cn",
+        "query_type": ["A", "AAAA"],
+        "server": "dns_fakeip"
+      }
+    ],
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.18.0.0/15",
+      "inet6_range": "fc00::/18"
+    },
+    "independent_cache": true,
+    "final": "proxydns"
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "inet4_address": "172.19.0.1/30",
+      "inet6_address": "fd00::1/126",
+      "auto_route": true,
+      "strict_route": true,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "prefer_ipv4"
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "🚀节点选择",
+      "type": "selector",
+      "default": "♻️自动选择",
+      "outbounds": [
+        "♻️自动选择",
+        "日本🇯🇵-vless_reality",
+        "日本🇯🇵-vmess_ws",
+        "日本🇯🇵-hy2",
+        "日本🇯🇵-tuic5"
+      ]
+    },
+    {
+      "tag": "🤖 OpenAI",
+      "type": "selector",
+      "outbounds": [
+        "♻️自动选择",
+        "日本🇯🇵-vless_reality",
+        "日本🇯🇵-vmess_ws",
+        "日本🇯🇵-hy2",
+        "日本🇯🇵-tuic5"
+      ]
+    },
+    {
+      "type": "vless",
+      "tag": "日本🇯🇵-vless_reality",
+      "server": "103.76.131.153",
+      "server_port": 36027,
+      "uuid": "925ef9a2-45a7-4a06-9c5e-b1382a4f85a0",
+      "packet_encoding": "xudp",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.yahoo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "hR0C2NUDnlS05rqEQB9osHursYILq13wGpVlImAHVEw",
+          "short_id": "1d800107"
+        }
+      }
+    },
+    {
+      "server": "vps.dogcode.xyz",
+      "server_port": 2087,
+      "tag": "日本🇯🇵-vmess_ws",
+      "tls": {
+        "enabled": true,
+        "server_name": "vps.dogcode.xyz",
+        "insecure": false,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "packetaddr",
+      "transport": {
+        "headers": {
+          "Host": ["vps.dogcode.xyz"]
+        },
+        "path": "925ef9a2-45a7-4a06-9c5e-b1382a4f85a0-vm",
+        "type": "ws"
+      },
+      "type": "vmess",
+      "security": "auto",
+      "uuid": "925ef9a2-45a7-4a06-9c5e-b1382a4f85a0"
+    },
+    {
+      "type": "hysteria2",
+      "tag": "日本🇯🇵-hy2",
+      "server": "vps.dogcode.xyz",
+      "server_port": 62278,
+      "password": "925ef9a2-45a7-4a06-9c5e-b1382a4f85a0",
+      "tls": {
+        "enabled": true,
+        "server_name": "vps.dogcode.xyz",
+        "insecure": false,
+        "alpn": ["h3"]
+      }
+    },
+    {
+      "type": "tuic",
+      "tag": "日本🇯🇵-tuic5",
+      "server": "vps.dogcode.xyz",
+      "server_port": 47006,
+      "uuid": "925ef9a2-45a7-4a06-9c5e-b1382a4f85a0",
+      "password": "925ef9a2-45a7-4a06-9c5e-b1382a4f85a0",
+      "congestion_control": "bbr",
+      "udp_relay_mode": "native",
+      "udp_over_stream": false,
+      "zero_rtt_handshake": false,
+      "heartbeat": "10s",
+      "tls": {
+        "enabled": true,
+        "server_name": "vps.dogcode.xyz",
+        "insecure": false,
+        "alpn": ["h3"]
+      }
+    },
+    {
+      "tag": "DIRECT",
+      "type": "direct"
+    },
+    {
+      "tag": "block",
+      "type": "block"
+    },
+    {
+      "tag": "dns-out",
+      "type": "dns"
+    },
+    {
+      "tag": "♻️自动选择",
+      "type": "urltest",
+      "outbounds": [
+        "日本🇯🇵-vless_reality",
+        "日本🇯🇵-vmess_ws",
+        "日本🇯🇵-hy2",
+        "日本🇯🇵-tuic5"
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "1m",
+      "tolerance": 50,
+      "interrupt_exist_connections": false
+    }
+  ],
+  "route": {
+    "rule_set": [
+      {
+        "tag": "geosite-category-ads-all",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/category-ads-all.srs"
+      },
+      {
+        "tag": "geosite-apple",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/apple.srs"
+      },
+      {
+        "tag": "geosite-private",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/private.srs"
+      },
+      {
+        "tag": "geoip-private",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/private_geoip.srs"
+      },
+      {
+        "tag": "geosite-geolocation-!cn",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/geolocation-not_cn.srs"
+      },
+      {
+        "tag": "geosite-google",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/google.srs"
+      },
+      {
+        "tag": "geosite-cn",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/geolocation-cn.srs"
+      },
+      {
+        "tag": "geoip-cn",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/cn.srs"
+      }
+    ],
+    "auto_detect_interface": true,
+    "final": "DIRECT",
+    "rules": [
+      {
+        "outbound": "dns-out",
+        "protocol": "dns"
+      },
+      {
+        "clash_mode": "Direct",
+        "outbound": "DIRECT"
+      },
+      {
+        "clash_mode": "Global",
+        "outbound": "🚀节点选择"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "DIRECT"
+      },
+      {
+        "domain": ["speedtest.net"],
+        "domain_keyword": ["speedtest"],
+        "domain_suffix": [
+          "speedtest.net",
+          "googleadservices.com",
+          "v2rayse.com"
+        ],
+        "outbound": "🚀节点选择"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "rule_set": "geosite-category-ads-all"
+          },
+          {
+            "domain_regex": "^stun\\..+"
+          },
+          {
+            "domain_keyword": ["stun", "httpdns"]
+          },
+          {
+            "protocol": "stun"
+          }
+        ],
+        "outbound": "block"
+      },
+      {
+        "rule_set": [
+          "geosite-private",
+          "geosite-cn",
+          "geoip-private",
+          "geoip-cn",
+          "geosite-apple"
+        ],
+        "outbound": "DIRECT"
+      },
+      {
+        "domain": ["apple.comscoreresearch.com"],
+        "domain_suffix": [
+          "aaplimg.com",
+          "akadns.net",
+          "apple-cloudkit.com",
+          "apple-dns.net",
+          "apple-mapkit.com",
+          "apple.co",
+          "apple.com",
+          "apple.com.cn",
+          "apple.news",
+          "appstore.com",
+          "cdn-apple.com",
+          "crashlytics.com",
+          "icloud-content.com",
+          "icloud.com",
+          "icloud.com.cn",
+          "itunes.com",
+          "me.com",
+          "mzstatic.com"
+        ],
+        "ip_cidr": [
+          "17.0.0.0/8",
+          "63.92.224.0/19",
+          "65.199.22.0/23",
+          "139.178.128.0/18",
+          "144.178.0.0/19",
+          "144.178.36.0/22",
+          "144.178.48.0/20",
+          "192.35.50.0/24",
+          "198.183.17.0/24",
+          "205.180.175.0/24"
+        ],
+        "outbound": "DIRECT"
+      },
+      {
+        "domain": ["xiaomi.com"],
+        "domain_keyword": ["Xiaomi", "xiaomi"],
+        "domain_suffix": ["xiaomi.com", "mi.com", "cloudflare"],
+        "outbound": "DIRECT"
+      },
+      {
+        "rule_set": ["geosite-google", "geosite-geolocation-!cn"],
+        "outbound": "🚀节点选择"
+      }
+    ]
+  },
+  "ntp": {
+    "enabled": true,
+    "server": "time.apple.com",
+    "server_port": 123,
+    "interval": "30m",
+    "detour": "DIRECT"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "route": {
+    "rule_set": [
+      {
+        "tag": "geosite-category-ads-all",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/category-ads-all.srs",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs"
+      },
+      {
+        "tag": "geosite-telegram",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/telegram_geosite.srs",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/telegram.srs"
+      },
+      {
+        "tag": "geoip-telegram",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/telegram_geoip.srs",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs"
+      },
+      {
+        "tag": "geosite-youtube",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/youtube.srs",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/youtube.srs"
+      },
+      {
+        "tag": "geosite-netflix",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/netflix.srs",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/netflix.srs"
+      },
+      {
+        "tag": "geoip-netflix",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/netflix_geoip.srs",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/netflix.srs"
+      },
+      {
+        "tag": "geosite-openai@ads",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/openai.srs",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/openai@ads.srs"
+      },
+      {
+        "tag": "geosite-openai",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/openai_geosite.srs",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/openai.srs"
+      },
+      {
+        "tag": "geosite-apple",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/apple.srs",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/apple.srs"
+      },
+      {
+        "tag": "geosite-google",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/google.srs",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs"
+      },
+      {
+        "tag": "geoip-google",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/google_geoip.srs",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs"
+      },
+      {
+        "tag": "geosite-microsoft",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/microsoft.srs",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/microsoft.srs"
+      },
+      {
+        "tag": "geosite-geolocation-!cn",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/geolocation-!cn.srs",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs"
+      },
+      {
+        "tag": "geosite-github",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/github.srs",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/github.srs"
+      },
+      {
+        "tag": "geosite-private",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/private.srs",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/private.srs"
+      },
+      {
+        "tag": "geosite-cn",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/cn.srs",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs"
+      },
+
+      {
+        "tag": "geoip-private",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/private_geoip.srs",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/private.srs"
+      },
+      {
+        "tag": "geoip-cn",
+        "type": "local",
+        "format": "binary",
+        "path": "/usr/share/geo-data/geo/cn_geoip.srs",
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs"
+      }
+    ]
+  }
+}
